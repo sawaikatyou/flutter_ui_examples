@@ -1,28 +1,27 @@
-import 'package:flutter_ui_examples/main.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_examples/applications/globals.dart';
+import 'package:flutter/cupertino.dart';
 
-
-class MyCupertinoApp extends StatelessWidget {
+class CupertinoCounter extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
       title: 'Flutter Demo',
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: CupertinoHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class CupertinoHomePage extends StatefulWidget {
+  CupertinoHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _CupertinoHomePageState createState() => _CupertinoHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _CupertinoHomePageState extends State<CupertinoHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
