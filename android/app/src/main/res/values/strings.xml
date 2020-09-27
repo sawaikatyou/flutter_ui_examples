@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">mymagazine_cpfmock_backend</string>
+    <string name="buildFlavor">debug</string>
+</resources>

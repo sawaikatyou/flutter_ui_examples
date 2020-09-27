@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_examples/constraint/constraints.dart';
+import 'package:flutter_ui_examples/constraints/constraints.dart';
 
 class ThreeButtonDialogApp extends StatefulWidget {
   final String _title = '3 button Dialog';

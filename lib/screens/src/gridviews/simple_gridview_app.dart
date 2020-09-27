@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_examples/constraint/constraints.dart';
+import 'package:flutter_ui_examples/constraints/constraints.dart';
 
 class SimpleGridViewApp extends StatefulWidget {
   final String _title = 'SimpleGrid';
 
-  int mycrossaxiscount;
+  int axis;
 
-  SimpleGridViewApp({Key key, this.mycrossaxiscount}) : super(key: key);
+  SimpleGridViewApp({Key key, this.axis}) : super(key: key);
 
   @override
   SimpleGridViewState createState() => new SimpleGridViewState();
@@ -54,7 +54,7 @@ class SimpleGridViewState extends State<SimpleGridViewApp> {
         appBar: AppBar(
           title: Text(widget._title),
         ),
-        body: GridView.count(crossAxisCount: widget.mycrossaxiscount,
+        body: GridView.count(crossAxisCount: widget.axis,
         mainAxisSpacing: 10.0,
         crossAxisSpacing:10.0,
         padding: cDefaultPadding,

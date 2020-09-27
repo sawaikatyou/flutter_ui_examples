@@ -1,40 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_examples/constraint/constraints.dart';
+import 'package:flutter_ui_examples/constraints/constraints.dart';
+import 'package:flutter_ui_examples/generated/l10n.dart';
 
+/// ジャンケンアプリ
+///
+///ジャンケンするだけ
 class JankenButtonApp extends StatefulWidget {
-  final String _widgettitle = 'Junken Button Tap';
-  final String _defaultmessage = 'じゃんけんしよう！';
-  final String _buttonLabel = 'じゃんけんをする';
-
   @override
-  _JankenButtonAppState createState() => new _JankenButtonAppState();
+  _JankenButtonAppState createState() => _JankenButtonAppState();
 }
 
 class _JankenButtonAppState extends State<JankenButtonApp> {
-  int _counter = 0;
-  String message;
-
-  static var _janken_no_te = <String>['グー', 'チョキ', 'パー'];
-
-  @override
-  void initState() {
-    super.initState();
-    message = widget._defaultmessage;
-  }
-
-  void buttonPressed() {
-    setState(() {
-      /* ランダム生成で先頭を取得。それを手とする */
-      message = (_janken_no_te..shuffle()).first;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    var s = S.of(context);
+    if (message == null) {
+      message = s.jankenapp_defaultmessage;
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget._widgettitle),
-      ),
+      appBar: AppBar(title: Text(s.jankenapp_title)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -53,11 +38,22 @@ class _JankenButtonAppState extends State<JankenButtonApp> {
                 color: Colors.black12,
                 child: Padding(
                   padding: cDefaultPadding,
-                  child: Text(widget._buttonLabel, style: cDefaultFontL),
+                  child: Text(s.jankenapp_buttonlabel, style: cDefaultFontL),
                 )),
           ],
         ),
       ),
     );
   }
+
+  void buttonPressed() {
+    setState(() {
+      /* ランダム生成で先頭を取得。それを手とする */
+      message = (_JankenNoTe..shuffle()).first;
+    });
+  }
+
+  String message;
+
+  static var _JankenNoTe = <String>['グー', 'チョキ', 'パー'];
 }

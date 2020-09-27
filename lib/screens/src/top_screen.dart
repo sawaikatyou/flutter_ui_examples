@@ -1,103 +1,113 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_examples/applications/globals.dart';
+import 'package:flutter_ui_examples/generated/l10n.dart';
 import 'package:flutter_ui_examples/screens/screens.dart';
 import 'package:flutter_ui_examples/widgets/widgets.dart';
 
 class TopScreen extends SelectApp {
   @override
-  void setup() {
-    appbarTitle = "select your app type";
+  void setup(BuildContext context) {
+    super.setup(context);
+    var res = S.of(context);
 
+    appbarTitle = res.top_screen_title;
     listItems = [
-      ChoiceItem(
-        'App Examples',
+      SelectItem.subApp(
         SelectApp(
-          appbarTitle: 'App Examples',
+          appbarTitle: res.app_example_title,
           listItems: [
-            ChoiceItem(
-                'Simple Counter',
-                SelectApp(
-                  appbarTitle: 'Simple Counter',
-                  listItems: [
-                    ChoiceItem('Material', MaterialCounter()),
-                    ChoiceItem('Cupertino', CupertinoCounter()),
-                  ],
-                )),
-            ChoiceItem('Janken App', JankenButtonApp()),
+            SelectItem.subApp(SelectApp(
+              appbarTitle: res.simple_counter,
+              listItems: [
+                SelectItem(res.msg_material, MaterialCounter()),
+                SelectItem(res.msg_cupertino, CupertinoCounter()),
+              ],
+            )),
+            SelectItem(res.janken_app, JankenButtonApp()),
           ],
         ),
       ),
-      ChoiceItem(
-        'Dialog Examples',
+      SelectItem.subApp(
         SelectApp(
-          appbarTitle: 'Dialog Examples',
+          appbarTitle: res.dialogs_examples,
           listItems: [
-            ChoiceItem('Ok only', OkOnlyDialogApp()),
-            ChoiceItem('Ok / Cancel', OkCancelDialogApp()),
-            ChoiceItem('three button', ThreeButtonDialogApp()),
-            ChoiceItem('select item', SelectItemDialogApp()),
-            ChoiceItem('Circle Waiting', CircleWaitingApp()),
-            ChoiceItem('Modal Bottom Sheet', ModalBottomSheetApp()),
+            SelectItem(res.dialogs_okonly, OkOnlyDialogApp()),
+            SelectItem(res.dialogs_okcancel, OkCancelDialogApp()),
+            SelectItem(res.dialogs_threebutton, ThreeButtonDialogApp()),
+            SelectItem(res.dialogs_selectitem, SelectItemDialogApp()),
+            SelectItem(res.dialogs_circlewaiting, CircleWaitingApp()),
+            SelectItem(res.dialogs_modalbottomsheet, ModalBottomSheetApp()),
           ],
         ),
       ),
-      ChoiceItem(
-        'GridViews Examples',
+      SelectItem.subApp(
         SelectApp(
-          appbarTitle: 'GridViews Examples',
+          appbarTitle: res.gridviews_examples,
           listItems: [
-            ChoiceItem('2 Line', SimpleGridViewApp(mycrossaxiscount: 2)),
-            ChoiceItem('3 Line', SimpleGridViewApp(mycrossaxiscount: 3)),
-            ChoiceItem('4 Line', SimpleGridViewApp(mycrossaxiscount: 4)),
+            SelectItem(res.gridviews_2lines, SimpleGridViewApp(axis: 2)),
+            SelectItem(res.gridviews_3lines, SimpleGridViewApp(axis: 3)),
+            SelectItem(res.gridviews_4lines, SimpleGridViewApp(axis: 4)),
           ],
         ),
       ),
-      ChoiceItem(
-        'Inputs Examples',
+      SelectItem.subApp(
         SelectApp(
-          appbarTitle: 'Inputs Examples',
+          appbarTitle: res.inputs_examples,
           listItems: [
-            ChoiceItem('Text Field Input', TextFieldInputApp()),
-            ChoiceItem('Text Field LiveInput', TextFieldLiveInputApp()),
+            SelectItem(res.text_field_input, TextFieldInputApp()),
+            SelectItem(res.text_field_liveinput, TextFieldLiveInputApp()),
           ],
         ),
       ),
-      ChoiceItem(
-        'Layouts Examples',
+      SelectItem.subApp(
         SelectApp(
-          appbarTitle: 'Layouts Examples',
+          appbarTitle: res.layouts_examples,
           listItems: [
-            ChoiceItem('Top layout', TopLayoutApp()),
-            ChoiceItem('Center Layout', CenterLayoutApp()),
-            ChoiceItem('Bottom Layout', BottomLayoutApp()),
+            SelectItem(res.layouts_toplayout, TopLayoutApp()),
+            SelectItem(res.layouts_centerlayout, CenterLayoutApp()),
+            SelectItem(res.layouts_bottomlayout, BottomLayoutApp()),
           ],
         ),
       ),
-      ChoiceItem(
-        'ListView Examples',
+      SelectItem.subApp(
         SelectApp(
-          appbarTitle: 'ListView Examples',
+          appbarTitle: res.listviews_examples,
           listItems: [
-            ChoiceItem('Label And TextList', LabelAndList()),
-            ChoiceItem('ListTile And TapDemo', ListTileAndTap()),
-            ChoiceItem('Simple ScrollListView', SimpleScrollList()),
-            ChoiceItem('Simple Pull To Refresh', SimplePullToRefresh())
+            SelectItem(res.listviews_label_and_textlist, LabelAndList()),
+            SelectItem(res.listviews_listtile_and_tap, ListTileAndTap()),
+            SelectItem(res.listviews_simplescrolllist, SimpleScrollList()),
+            SelectItem(
+                res.listviews_simple_pull_to_refresh, SimplePullToRefresh())
           ],
         ),
       ),
-      ChoiceItem(
-        'Tab Examples',
+      SelectItem.subApp(
         SelectApp(
-          appbarTitle: 'Tab Examples',
+          appbarTitle: res.platformchannel_examples,
           listItems: [
-            ChoiceItem('Simple Tab List', SimpleTabList()),
-            ChoiceItem('Simple AppBar Button', SimpleAppBarButton()),
+            SelectItem(res.pc_simple, SimplePluginApp()),
+          ],
+        ),
+      ),
+      SelectItem.subApp(
+        SelectApp(
+          appbarTitle: res.platformview_examples,
+          listItems: [
+            SelectItem(res.pv_text, OsTextApp()),
+            SelectItem(res.pv_indicator, OsIndicatorApp()),
+          ],
+        ),
+      ),
+      SelectItem.subApp(
+        SelectApp(
+          appbarTitle: res.tabs_examples,
+          listItems: [
+            SelectItem(res.tabs_simple_tab_list, SimpleTabList()),
+            SelectItem(res.tabs_appbar_fivestar, SimpleAppBarButton()),
           ],
         ),
       ),
     ];
-
-    super.setup();
   }
 
   @override

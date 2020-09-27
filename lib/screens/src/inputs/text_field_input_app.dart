@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_examples/constraint/constraints.dart';
+import 'package:flutter_ui_examples/constraints/constraints.dart';
 
 class TextFieldInputApp extends StatefulWidget {
   final String _widgettitle = 'TextField Input';

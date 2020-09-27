@@ -1,17 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_examples/constraint/constraints.dart';
+import 'package:flutter_ui_examples/constraints/constraints.dart';
 
 class CircleWaitingApp extends StatefulWidget {
   final String _title = 'Circle Progress Dialog';
 
   @override
-  _CircleWaitingAppState createState() => new _CircleWaitingAppState();
+  _CircleWaitingAppState createState() => _CircleWaitingAppState();
 }
 
 class _CircleWaitingAppState extends State<CircleWaitingApp> {
-  static const String _defaultmessage = '''please click 'show' Button
-waiting 3sec''';
+  static const String _defaultmessage = '''
+please click 'show' Button
+waiting 3sec
+''';
 
   String _message;
   bool _isShowingProgressDialog;

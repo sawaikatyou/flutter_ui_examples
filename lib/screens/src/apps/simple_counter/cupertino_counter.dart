@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_ui_examples/applications/globals.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_ui_examples/generated/l10n.dart';
 
+/// CupertinoDesignのサンプルアプリ
+///
+///
 class CupertinoCounter extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -22,8 +25,6 @@ class CupertinoHomePage extends StatefulWidget {
 }
 
 class _CupertinoHomePageState extends State<CupertinoHomePage> {
-  int _counter = 0;
-
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -32,34 +33,31 @@ class _CupertinoHomePageState extends State<CupertinoHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var s = S.of(context);
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         leading: GestureDetector(
           child: Icon(CupertinoIcons.back),
           onTap: () => Navigator.pop(globalcontext),
         ),
-        middle: Text("widget.title"),
+        middle: Text(widget.title),
       ),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-            ),
+            Text(s.simple_counter_message),
+            Text('$_counter'),
             CupertinoButton(
+              borderRadius: new BorderRadius.circular(30.0),
+              child: Icon(CupertinoIcons.add),
               onPressed: _incrementCounter,
-              color: Colors.blue,
-//              borderRadius: new BorderRadius.circular(30.0),
-              child: Text("add"),
-//              child:Icon(CupertinoIcons.add)
-            )
+            ),
           ],
         ),
       ),
     );
   }
+
+  int _counter = 0;
 }

@@ -1,6 +1,9 @@
 import 'package:flutter_ui_examples/applications/globals.dart';
 import 'package:flutter/material.dart';
 
+/// MaterialDesignのサンプルアプリ
+///
+///
 class MaterialCounter extends StatelessWidget {
   // This widget is the root of your application.
   @override
