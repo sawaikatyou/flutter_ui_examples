@@ -13,6 +13,14 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		F74385EA25209A1A00AFACB9 /* HelloWorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74385E925209A1A00AFACB9 /* HelloWorldViewController.swift */; };
+		F7A90BF925209D84005902E4 /* OsIndicatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A90BF625209D84005902E4 /* OsIndicatorController.swift */; };
+		F7A90BFA25209D84005902E4 /* OsIndicatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A90BF725209D84005902E4 /* OsIndicatorFactory.swift */; };
+		F7A90BFB25209D84005902E4 /* OsIndicatorPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A90BF825209D84005902E4 /* OsIndicatorPlugin.swift */; };
+		F7A90BFF25209D90005902E4 /* OsTextViewPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A90BFC25209D90005902E4 /* OsTextViewPlugin.swift */; };
+		F7A90C0025209D90005902E4 /* OsTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A90BFD25209D90005902E4 /* OsTextViewController.swift */; };
+		F7A90C0125209D90005902E4 /* OsTextViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A90BFE25209D90005902E4 /* OsTextViewFactory.swift */; };
+		F7A90C0325209D98005902E4 /* SimplePlatformPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A90C0225209D98005902E4 /* SimplePlatformPlugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +50,14 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F74385E925209A1A00AFACB9 /* HelloWorldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelloWorldViewController.swift; sourceTree = "<group>"; };
+		F7A90BF625209D84005902E4 /* OsIndicatorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OsIndicatorController.swift; sourceTree = "<group>"; };
+		F7A90BF725209D84005902E4 /* OsIndicatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OsIndicatorFactory.swift; sourceTree = "<group>"; };
+		F7A90BF825209D84005902E4 /* OsIndicatorPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OsIndicatorPlugin.swift; sourceTree = "<group>"; };
+		F7A90BFC25209D90005902E4 /* OsTextViewPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OsTextViewPlugin.swift; sourceTree = "<group>"; };
+		F7A90BFD25209D90005902E4 /* OsTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OsTextViewController.swift; sourceTree = "<group>"; };
+		F7A90BFE25209D90005902E4 /* OsTextViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OsTextViewFactory.swift; sourceTree = "<group>"; };
+		F7A90C0225209D98005902E4 /* SimplePlatformPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimplePlatformPlugin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +102,8 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				F74385EE25209BC500AFACB9 /* Plugins */,
+				F74385E925209A1A00AFACB9 /* HelloWorldViewController.swift */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
@@ -96,6 +114,44 @@
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 			);
 			path = Runner;
+			sourceTree = "<group>";
+		};
+		F74385EE25209BC500AFACB9 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				F74385FD25209C2300AFACB9 /* simple */,
+				F74385F625209C0A00AFACB9 /* ostext */,
+				F74385EF25209BF500AFACB9 /* osindicator */,
+			);
+			path = Plugins;
+			sourceTree = "<group>";
+		};
+		F74385EF25209BF500AFACB9 /* osindicator */ = {
+			isa = PBXGroup;
+			children = (
+				F7A90BF625209D84005902E4 /* OsIndicatorController.swift */,
+				F7A90BF725209D84005902E4 /* OsIndicatorFactory.swift */,
+				F7A90BF825209D84005902E4 /* OsIndicatorPlugin.swift */,
+			);
+			path = osindicator;
+			sourceTree = "<group>";
+		};
+		F74385F625209C0A00AFACB9 /* ostext */ = {
+			isa = PBXGroup;
+			children = (
+				F7A90BFD25209D90005902E4 /* OsTextViewController.swift */,
+				F7A90BFE25209D90005902E4 /* OsTextViewFactory.swift */,
+				F7A90BFC25209D90005902E4 /* OsTextViewPlugin.swift */,
+			);
+			path = ostext;
+			sourceTree = "<group>";
+		};
+		F74385FD25209C2300AFACB9 /* simple */ = {
+			isa = PBXGroup;
+			children = (
+				F7A90C0225209D98005902E4 /* SimplePlatformPlugin.swift */,
+			);
+			path = simple;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,7 +261,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
+				F7A90BFA25209D84005902E4 /* OsIndicatorFactory.swift in Sources */,
+				F7A90C0125209D90005902E4 /* OsTextViewFactory.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				F7A90BF925209D84005902E4 /* OsIndicatorController.swift in Sources */,
+				F7A90C0025209D90005902E4 /* OsTextViewController.swift in Sources */,
+				F74385EA25209A1A00AFACB9 /* HelloWorldViewController.swift in Sources */,
+				F7A90C0325209D98005902E4 /* SimplePlatformPlugin.swift in Sources */,
+				F7A90BFF25209D90005902E4 /* OsTextViewPlugin.swift in Sources */,
+				F7A90BFB25209D84005902E4 /* OsIndicatorPlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

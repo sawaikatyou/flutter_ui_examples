@@ -1,7 +1,10 @@
-import 'package:flutter_ui_examples/main.dart';
+import 'package:flutter_ui_examples/applications/globals.dart';
 import 'package:flutter/material.dart';
 
-class MyMaterialApp extends StatelessWidget {
+/// MaterialDesignのサンプルアプリ
+///
+///
+class MaterialCounter extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -10,20 +13,20 @@ class MyMaterialApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MaterialHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MaterialHomePage extends StatefulWidget {
+  MaterialHomePage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MaterialHomePageState createState() => _MaterialHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MaterialHomePageState extends State<MaterialHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {

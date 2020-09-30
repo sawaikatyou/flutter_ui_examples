@@ -1,45 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-enum SelectItemType {
-  android,
-  ios,
-  both,
-}
+import 'select_item.dart';
+import 'widgets_constraints.dart';
 
-class ChoiceItem {
-  final String name;
-  final Widget widget;
-  final SelectItemType type;
-
-  ChoiceItem(this.name, this.widget) : type = SelectItemType.both ;
-
-  ChoiceItem.androidOnly(this.name, this.widget)
-      : type = SelectItemType.android;
-
-  ChoiceItem.iOSOnly(this.name, this.widget) : type = SelectItemType.ios;
-}
-
+// ignore: must_be_immutable
 class SelectApp extends StatelessWidget {
-  BuildContext _context;
-  int _tappedNo = -1;
-  String appbarTitle;
-  List<ChoiceItem> listItems = [];
-  List<ChoiceItem> dropdownItems = [];
-
   SelectApp({this.appbarTitle, this.listItems, this.dropdownItems});
 
-  List<ChoiceItem> getChoiceItems() {
-    return listItems;
-  }
+  List<SelectItem> getChoiceItems() => listItems;
 
-  List<ChoiceItem> getDropDownMenuItems() {
-    return dropdownItems;
-  }
+  List<SelectItem> getDropDownMenuItems() => dropdownItems;
 
-  String getAppBarTitle() {
-    return appbarTitle;
-  }
+  String getAppBarTitle() => appbarTitle;
 
   get myContext => _context;
 
@@ -47,7 +20,7 @@ class SelectApp extends StatelessWidget {
   Widget build(BuildContext context) {
     _context = context;
 
-    setup();
+    setup(context);
 
     var actionItems = isDropdownAvailable()
         ? <Widget>[
@@ -70,10 +43,10 @@ class SelectApp extends StatelessWidget {
 
   void onTapNumber(BuildContext context, int index) {
     debugPrint("onTapNumber() tapped index=" + index.toString());
-    List<ChoiceItem> choiceList = getChoiceItems();
+    List<SelectItem> choiceList = getChoiceItems();
 
     if (index < choiceList.length) {
-      ChoiceItem item = choiceList[index];
+      SelectItem item = choiceList[index];
       if (isExecutable(item)) {
         bootChild(context, choiceList[index].widget);
       } else {
@@ -93,17 +66,18 @@ class SelectApp extends StatelessWidget {
   }
 
   List<Widget> items(BuildContext context) {
-    List<ChoiceItem> choiceItems = getChoiceItems();
+    List<SelectItem> choiceItems = getChoiceItems();
 
     List<Widget> result = [];
     int count = choiceItems.length;
     for (var i = 0; i < count; i++) {
       var item = choiceItems[i];
       bool execute = isExecutable(item);
+      var label = item.metaName.isNotEmpty ? item.metaName : item.name;
 
       result.add(ListTile(
         title: Text(
-          item.name,
+          label,
           style: TextStyle(
               fontSize: 24.0, color: execute ? Colors.black : Colors.grey),
         ),
@@ -118,15 +92,14 @@ class SelectApp extends StatelessWidget {
   }
 
   /// このアイテムはターゲットで実行可能か判定する
-  bool isExecutable(ChoiceItem item) {
+  bool isExecutable(SelectItem item) {
     bool result;
 
     if ((TargetPlatform.iOS == defaultTargetPlatform) &&
-        (item.type == SelectItemType.both || item.type == SelectItemType.ios)) {
+        (item.type == SelectOsType.both || item.type == SelectOsType.ios)) {
       result = true;
     } else if ((TargetPlatform.android == defaultTargetPlatform) &&
-        (item.type == SelectItemType.both ||
-            item.type == SelectItemType.android)) {
+        (item.type == SelectOsType.both || item.type == SelectOsType.android)) {
       result = true;
     } else {
       result = false;
@@ -147,9 +120,9 @@ class SelectApp extends StatelessWidget {
   }
 
   List<Widget> getWidgetList() {
-    List<ChoiceItem> choiceItems = getChoiceItems();
+    List<SelectItem> choiceItems = getChoiceItems();
     List<Widget> result = [];
-    choiceItems.forEach((ChoiceItem item) {
+    choiceItems.forEach((SelectItem item) {
       result.add(item.widget);
     });
 
@@ -157,10 +130,10 @@ class SelectApp extends StatelessWidget {
   }
 
   List<DropdownMenuItem> getDropdownMenuItems() {
-    List<ChoiceItem> dropdownItems = getDropDownMenuItems();
+    List<SelectItem> dropdownItems = getDropDownMenuItems();
     List<DropdownMenuItem> result = [];
 
-    dropdownItems.forEach((ChoiceItem item) {
+    dropdownItems.forEach((SelectItem item) {
       result.add(DropdownMenuItem(child: Text(item.name), value: item.name));
     });
 
@@ -177,14 +150,20 @@ class SelectApp extends StatelessWidget {
   }
 
   void onDropdownButtonSelected(var value) {
-    List<ChoiceItem> dropdownItems = getDropDownMenuItems();
+    List<SelectItem> dropdownItems = getDropDownMenuItems();
 
-    dropdownItems.forEach((ChoiceItem item) {
+    dropdownItems.forEach((SelectItem item) {
       if (value == item.name) {
         bootChild(_context, item.widget);
       }
     });
   }
 
-  void setup() {}
+  void setup(BuildContext context) {}
+
+  BuildContext _context;
+  int _tappedNo;
+  String appbarTitle;
+  List<SelectItem> listItems;
+  List<SelectItem> dropdownItems;
 }
